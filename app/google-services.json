@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "137663554385",
+    "firebase_url": "https://finalproject-e6663.firebaseio.com",
+    "project_id": "finalproject-e6663",
+    "storage_bucket": "finalproject-e6663.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:137663554385:android:25ea39b97b8c3f71",
+        "android_client_info": {
+          "package_name": "com.example.abed.skipe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "137663554385-6akf7if5dgsgr4d351cbk3u5u8bsptlv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRItRxqe0YwLRnKueg6Og8oaWEJ7iQq5I"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
