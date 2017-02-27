@@ -16,7 +16,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
         Session.getInstance().getUser();
         if (Session.getInstance().isUserLoggedIn() == true) {
-            Toast.makeText(SplashActivity.this, Session.getInstance().getUser().studentEmail, Toast.LENGTH_SHORT).show();
+            Toast.makeText(SplashActivity.this, Session.getInstance().getUser().email, Toast.LENGTH_SHORT).show();
             Intent gotohome = new Intent(SplashActivity.this, HomeActivity.class);
             startActivity(gotohome);
             finish();

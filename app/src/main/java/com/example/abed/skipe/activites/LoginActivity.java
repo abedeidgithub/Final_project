@@ -1,6 +1,5 @@
 package com.example.abed.skipe.activites;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,11 +16,10 @@ import android.widget.Toast;
 
 import com.example.abed.skipe.R;
 import com.example.abed.skipe.model.MainResponse;
-import com.example.abed.skipe.model.Student;
+import com.example.abed.skipe.model.users;
 import com.example.abed.skipe.utils.Session;
 import com.example.abed.skipe.webservices.WebService;
 import com.fourhcode.forhutils.FUtilsValidation;
-import com.google.firebase.iid.FirebaseInstanceId;
 
 
 import java.util.List;
@@ -36,14 +34,13 @@ import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
     private final String TAG = "LoginActivityTAG";
-
     @BindView(R.id.img_header_logo)
     ImageView imgHeaderLogo;
     @BindView(R.id.tv_login)
     TextView tvLogin;
-    @BindView(R.id.et_email)
+    @BindView(R.id.et_email_login)
     EditText etEmail;
-    @BindView(R.id.et_password)
+    @BindView(R.id.et_password_login)
     EditText etPassword;
     @BindView(R.id.lnlt_inputs_container)
     LinearLayout lnltInputsContainer;
@@ -87,66 +84,52 @@ public class LoginActivity extends AppCompatActivity {
                         ) {
                     setLoadingMode();
 
-                    final Student s = new Student();
-                    s.studentEmail= etEmail.getText().toString();
-                    s.studentPassword=etPassword.getText().toString();
+                   users s = new users();
+                   s.email= etEmail.getText().toString() ;
+                    s.password=etPassword.getText().toString();
+
 //                    // login User using Retrofit
-                    WebService.getInstance().getApi().loginStudent(s).enqueue(new Callback<MainResponse>() {
+
+                    WebService.getInstance().getApi().loginUsers(s).enqueue(new Callback<List<MainResponse>>() {
                         @Override
-                        public void onResponse(Call<MainResponse> call, Response<MainResponse> response) {
-                            if (response.body().getStatus() == 1) {
-                                Toast.makeText(LoginActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                                WebService.getInstance().getApi().getStudent(s).enqueue(new Callback<List<Student>>() {
+                        public void onResponse(Call<List<MainResponse>> call, Response<List<MainResponse>> response) {
+                            if(response.body().get(0).getStatus()==false){
+                                setNormalMode();
+                                Toast.makeText(LoginActivity.this, response.body().get(0).getMessage(), Toast.LENGTH_SHORT).show();
+                            }else{
+                                    if(response.body().get(0).verify.equals("true")){
 
-                                    public void onResponse(Call<List<Student>> call, Response<List<Student>> response) {
-                                        if (response.body().size() == 1) {
-//
-//                                                         Student s=new Student(response.body().get(0).getId().toString(),
-//                                                               response.body().get(0).getStudentName().toString(),
-//                                                               response.body().get(0).getStudentEmail().toString(),
-//                                                               response.body().get(0).getStudentPhoto().toString(),
-//                                                               response.body().get(0).getStudentPassword().toString(),
-//                                                               response.body().get(0).getStudentYear().toString(),
-//                                                               response.body().get(0).getStudentSection().toString(),
-//                                                               response.body().get(0).getStudentDepart().toString());
-
-                                            final Student s = new Student();
-                                            s.studentEmail = (response.body().get(0).studentEmail.toString());
-                                            s.id = (response.body().get(0).id);
-                                            s.studentName = (response.body().get(0).studentName.toString());
-                                            s.studentPassword = (response.body().get(0).studentPassword.toString());
-                                            s.studentYear = (response.body().get(0).studentYear.toString());
-                                            s.studentSection = (response.body().get(0).studentSection.toString());
-                                            s.studentDepart = (response.body().get(0).studentDepart.toString());
-
-                                            Session.getInstance().loginUser(s);
-                                        } else {
-                                            Toast.makeText(LoginActivity.this, "Error Mulit Object reutrned " + response.body().size(), Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-
-                                    @Override
-                                    public void onFailure(Call<List<Student>> call, Throwable t) {
-                                        Log.d(TAG, t.getLocalizedMessage());
-
-                                    }
-                                });
-
+                                        final users s = new users();
+                                    s.email = (response.body().get(0).email.toString());
+                                    s.id = (response.body().get(0).id);
+                                    s.name = (response.body().get(0).name.toString());
+                                    s.password = (response.body().get(0).password.toString());
+                                    s.year = (response.body().get(0).year);
+                                    s.section = (response.body().get(0).section.toString());
+                                    s.department = (response.body().get(0).department.toString());
+//                                    s.image=(response.body().get(0).image.toString()+"");
+//                                    s.user_flage=(response.body().get(0).user_flage.toString());
+//                                    s.remeber_token=(response.body().get(0).remeber_token.toString()+"");
+//                                    s.user_token=(response.body().get(0).user_token.toString()+"");
+                                    Session.getInstance().loginUser(s);
+                                    setNormalMode();
                                 Intent gotohome = new Intent(LoginActivity.this, HomeActivity.class);
                                 startActivity(gotohome);
                                 finish();
 
-                            } else {
-                                Log.d(TAG, response.body().getMessage());
-                                Toast.makeText(LoginActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+
+                                    }else{
+                                        setNormalMode();
+                                        Toast.makeText(LoginActivity.this, response.body().get(0).getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
+
                             }
-                            setNormalMode();
                         }
 
                         @Override
-                        public void onFailure(Call<MainResponse> call, Throwable t) {
-                            Log.d(TAG, t.getLocalizedMessage());
-
+                        public void onFailure(Call<List<MainResponse>> call, Throwable t) {
+                            setNormalMode();
+                            Toast.makeText(LoginActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
 

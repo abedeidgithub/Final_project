@@ -1,9 +1,15 @@
 package com.example.abed.skipe.model;
 
-import com.google.gson.annotations.Expose;
+/**
+ * Created by abed_eid on 03/12/2016.
+ */
+
 import com.google.gson.annotations.SerializedName;
 
-public class MainResponse {
+import io.realm.RealmObject;
+
+public class users extends RealmObject{
+
 
     @SerializedName("id")
     public String id;
@@ -35,33 +41,5 @@ public class MainResponse {
     public String user_site;
     @SerializedName("verify")
     public String verify;
-    @SerializedName("success")
-    @Expose
-    private boolean success;
-    @SerializedName("message")
-    @Expose
-    private String message;
-
-
-    public Boolean getStatus() {
-        return success;
-    }
-
-
-    public void setStatus(Boolean status) {
-        this.success = success;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-
-
 
 }

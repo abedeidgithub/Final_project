@@ -54,7 +54,6 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.MyView
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
 
-
         Schedule schedule = scheduleList.get(position);
         String to = (schedule.Schedule_to.substring(0, 5));
         String from = (schedule.Schedule_from.substring(0, 5));
@@ -62,20 +61,27 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.MyView
         int from_h = Integer.parseInt(from.substring(0, 2));
         int from_m = Integer.parseInt(from.substring(3, 5));
         int to_m = Integer.parseInt(to.substring(3, 5));
-             Calendar calander = Calendar.getInstance();
-            int cHour = calander.get(Calendar.HOUR_OF_DAY);
-            int cMinute = calander.get(Calendar.MINUTE);
-            if (cHour >= from_h && cHour <= to_h) {
-                if ((cMinute <= to_m || to_m==0 ) && cMinute>from_m) {
-                    holder.time_now.setImageResource(R.drawable.ic_now);
-                } else if(cMinute>to_m && to_m !=0){
-                    holder.time_now.setImageResource(R.drawable.ic_back);
-                }
-            }
-            if (cHour > to_h) {
+        Calendar calander = Calendar.getInstance();
+        int cHour = calander.get(Calendar.HOUR_OF_DAY);
+        int cMinute = calander.get(Calendar.MINUTE);
+        if (cHour >= from_h && cHour < to_h) {
+
+            holder.time_now.setImageResource(R.drawable.ic_now);
+
+        } else if (cHour == to_h) {
+            if (cMinute <= to_m) {
+                holder.time_now.setImageResource(R.drawable.ic_now);
+
+            } else {
                 holder.time_now.setImageResource(R.drawable.ic_back);
 
             }
+
+        }
+        if (cHour > to_h) {
+            holder.time_now.setImageResource(R.drawable.ic_back);
+
+        }
 
 
         if (to_h > 12) {

@@ -1,17 +1,12 @@
 package com.example.abed.skipe.activites;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -19,13 +14,12 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.abed.skipe.R;
 import com.example.abed.skipe.model.MainResponse;
-import com.example.abed.skipe.model.Student;
+import com.example.abed.skipe.model.users;
 import com.example.abed.skipe.utils.Session;
 import com.example.abed.skipe.webservices.WebService;
 import com.fourhcode.forhutils.FUtilsValidation;
@@ -110,48 +104,20 @@ public class RegisterActivity extends AppCompatActivity {
                         ) {
                     setLoadingMode();
                     // create new user object and set data from editTexts
-                    final Student s = new Student();
+                    final users s = new users();
 
-                    s.studentName = etUsername.getText().toString();
-                    s.studentEmail = etEmail.getText().toString();
-                    s.studentPassword = etPassword.getText().toString();
-                    s.studentYear = _year.getSelectedItem().toString();
-                    s.studentSection = _section.getSelectedItem().toString();
-                    s.studentDepart = _depart.getSelectedItem().toString();
+                    s.name = etUsername.getText().toString();
+                    s.email = etEmail.getText().toString();
+                    s.password = etPassword.getText().toString();
+                    s.year = _year.getSelectedItem().toString();
+                    s.section = _section.getSelectedItem().toString();
+                    s.department = _depart.getSelectedItem().toString();
 
                     WebService.getInstance().getApi().registerStudent(s).enqueue(new Callback<MainResponse>() {
                         @Override
-                        public void onResponse(Call<MainResponse> call, Response<MainResponse> response) {
-                            if (response.body().getStatus() == 1) {
+                        public void onResponse(Call<MainResponse> call, final Response<MainResponse> response) {
+                            if (response.body().getStatus() == true) {
                                 Toast.makeText(RegisterActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-
-                                WebService.getInstance().getApi().getStudent(s).enqueue(new Callback<List<Student>>() {
-                                    @Override
-                                    public void onResponse(Call<List<Student>> call, Response<List<Student>> response) {
-                                        if (response.body().size() == 1) {
-
-                                            final Student s = new Student();
-                                            s.studentEmail = (response.body().get(0).studentEmail.toString());
-                                            s.id = (response.body().get(0).id);
-                                            s.studentName = (response.body().get(0).studentName.toString());
-                                            s.studentPassword = (response.body().get(0).studentPassword.toString());
-                                            s.studentYear = (response.body().get(0).studentYear.toString());
-                                            s.studentSection = (response.body().get(0).studentSection.toString());
-                                            s.studentDepart = (response.body().get(0).studentDepart.toString());
-
-                                            Session.getInstance().loginUser(s);
-
-                                        } else {
-                                            Toast.makeText(RegisterActivity.this, "Error Mulit Object reutrned ", Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-
-                                    @Override
-                                    public void onFailure(Call<List<Student>> call, Throwable t) {
-                                        Log.d(TAG, t.getLocalizedMessage());
-
-                                    }
-                                });
 
                                 Intent gotohome = new Intent(RegisterActivity.this, SplashActivity.class);
                                 startActivity(gotohome);

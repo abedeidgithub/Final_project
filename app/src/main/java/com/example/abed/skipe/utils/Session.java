@@ -2,22 +2,14 @@ package com.example.abed.skipe.utils;
 
 
 import android.app.Activity;
-import android.app.Application;
-import android.app.Fragment;
 import android.content.Intent;
-import android.util.Log;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
-
-import android.util.Log;
 
 import com.example.abed.skipe.activites.LoginActivity;
-import com.example.abed.skipe.model.Student;
-
-import io.realm.Realm;
-import io.realm.RealmConfiguration;
+import com.example.abed.skipe.model.users;
 
 public class Session {
         // define single instance
@@ -47,9 +39,9 @@ public class Session {
         }
 
         // login user take user and add it to realm
-        public void loginUser(final Student user) {
+        public void loginUser(final users user) {
 
-            if (realm.where(Student.class).findFirst() == null) {
+            if (realm.where(users.class).findFirst() == null) {
 
                 realm.executeTransaction(new Realm.Transaction() {
                     @Override
@@ -71,18 +63,18 @@ public class Session {
             realm.executeTransaction(new Realm.Transaction() {
                 @Override
                 public void execute(Realm realm) {
-                    realm.delete(Student.class);
+                    realm.delete(users.class);
                     realm.deleteAll();
                 }
             });
         }
 
         public Boolean isUserLoggedIn() {
-            return realm.where(Student.class).findFirst() != null;
+            return realm.where(users.class).findFirst() != null;
         }
 
-        public Student getUser() {
-            return realm.where(Student.class).findFirst();
+        public users getUser() {
+            return realm.where(users.class).findFirst();
         }
 
         public void logoutAndGoToLogin(Activity activity) {

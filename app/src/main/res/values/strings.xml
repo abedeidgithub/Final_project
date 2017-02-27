@@ -60,5 +60,6 @@
     <string name="enter_password_again">Please Enter Password Again!</string>
 
     <string name="password_isnt_equal">Password isn\'t same !</string>
+    <string name="search">Search</string>
 
 </resources>

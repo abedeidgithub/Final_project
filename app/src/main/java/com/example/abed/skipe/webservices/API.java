@@ -2,13 +2,12 @@ package com.example.abed.skipe.webservices;
 
 import com.example.abed.skipe.model.MainResponse;
 import com.example.abed.skipe.model.Schedule;
-import com.example.abed.skipe.model.Student;
+import com.example.abed.skipe.model.users;
 
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 /**
@@ -18,14 +17,21 @@ import retrofit2.http.POST;
 public interface API {
 
 
-    @POST("login-student.php")
-    Call<MainResponse> loginStudent(@Body Student student);
+    @POST("login.php")
+    Call<List<MainResponse>> loginUsers(@Body users users);
 
-    @POST("register-student.php")
-    Call<MainResponse> registerStudent(@Body Student student);
+    @POST("insertUser.php")
+    Call<MainResponse> registerStudent(@Body users users);
 
-    @POST("select-student.php")
-    Call<List<Student>> getStudent(@Body Student student);
+
+
+
+
+
+
+
+    @POST("select-users.php")
+    Call<List<users>> getStudent(@Body users users);
 
     @POST("select-schedule.php")
     Call<List<Schedule>> getSchedule(@Body Schedule schedule);

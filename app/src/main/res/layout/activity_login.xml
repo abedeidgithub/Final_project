@@ -71,7 +71,7 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/et_email"
+                android:id="@+id/et_email_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_email_white_24dp"
@@ -84,7 +84,7 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/et_password"
+                android:id="@+id/et_password_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_lock_white_24dp"

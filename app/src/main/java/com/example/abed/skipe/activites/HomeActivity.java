@@ -7,14 +7,25 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.abed.skipe.Fragments.ScheduleFragment;
 import com.example.abed.skipe.R;
-import com.example.abed.skipe.model.Student;
+import com.example.abed.skipe.model.users;
 import com.example.abed.skipe.utils.Session;
+import com.example.abed.skipe.webservices.WebService;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class HomeActivity extends AppCompatActivity {
@@ -52,6 +63,15 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+             ImageButton inm=(ImageButton)findViewById(R.id.PImage);
+        Picasso.with(this).load("http://fci-suze.esy.es/Webservices/uploads/2017-Feb-Mon-12-0-thimages.jpeg").resize(105,180).transform(new CircleTransform()).into(inm);
+        inm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(HomeActivity.this, "hugiyfucy", Toast.LENGTH_SHORT).show();
+            }
+        });
+//
         Session.getInstance().getUser();
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
