@@ -63,14 +63,14 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-             ImageButton inm=(ImageButton)findViewById(R.id.PImage);
-        Picasso.with(this).load("http://fci-suze.esy.es/Webservices/uploads/2017-Feb-Mon-12-0-thimages.jpeg").resize(105,180).transform(new CircleTransform()).into(inm);
-        inm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(HomeActivity.this, "hugiyfucy", Toast.LENGTH_SHORT).show();
-            }
-        });
+//             ImageButton inm=(ImageButton)findViewById(R.id.PImage);
+//        Picasso.with(this).load("http://fci-suze.esy.es/Webservices/uploads/2017-Feb-Mon-12-0-thimages.jpeg").resize(105,280).transform(new CircleTransform()).into(inm);
+//        inm.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Toast.makeText(HomeActivity.this, "hugiyfucy", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 //
         Session.getInstance().getUser();
         viewPager = (ViewPager) findViewById(R.id.viewpager);
