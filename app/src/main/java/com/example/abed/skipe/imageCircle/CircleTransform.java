@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.abed.skipe.activites;
+package com.example.abed.skipe.imageCircle;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapShader;

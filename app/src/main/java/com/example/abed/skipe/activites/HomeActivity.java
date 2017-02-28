@@ -13,6 +13,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.abed.skipe.Fragments.Profile;
 import com.example.abed.skipe.Fragments.ScheduleFragment;
 import com.example.abed.skipe.R;
 import com.example.abed.skipe.model.users;
@@ -47,33 +48,14 @@ public class HomeActivity extends AppCompatActivity {
             R.drawable.ic_food,
             R.drawable.ic_travel
     };
-//private BroadcastReceiver post=new BroadcastReceiver() {
-//    @Override
-//    public void onReceive(Context context, Intent intent) {
-//        Post p=intent.getParcelableExtra("mes");
-//        if(p!=null){
-//
-//            post.add(p);
-//
-//        }
-//
-//    }
-//}
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-//             ImageButton inm=(ImageButton)findViewById(R.id.PImage);
-//        Picasso.with(this).load("http://fci-suze.esy.es/Webservices/uploads/2017-Feb-Mon-12-0-thimages.jpeg").resize(105,280).transform(new CircleTransform()).into(inm);
-//        inm.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Toast.makeText(HomeActivity.this, "hugiyfucy", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//
-        Session.getInstance().getUser();
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
+
+         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
@@ -101,7 +83,7 @@ public class HomeActivity extends AppCompatActivity {
     public void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new ScheduleFragment(), "Schedule");
-        adapter.addFragment(new ScheduleFragment(), "TWO");
+        adapter.addFragment(new Profile(), "profile");
         adapter.addFragment(new ScheduleFragment(), "THREE");
         adapter.addFragment(new ScheduleFragment(), "ONE");
         adapter.addFragment(new ScheduleFragment(), "TWO");

@@ -61,5 +61,8 @@
 
     <string name="password_isnt_equal">Password isn\'t same !</string>
     <string name="search">Search</string>
+    <string name="check">Ok</string>
+    <string name="update">Update</string>
+    <string name="site">Your Persioal Site</string>
 
 </resources>

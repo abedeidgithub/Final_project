@@ -21,7 +21,7 @@
         <activity android:name=".activites.LoginActivity" />
         <activity android:name=".activites.RegisterActivity" />
         <activity android:name=".activites.HomeActivity" />
-        <activity android:name=".activites.SplashActivity"></activity>
+        <activity android:name=".activites.SplashActivity" />
 
         <service android:name=".fcm.FirebaseService">
             <intent-filter>
@@ -29,6 +29,7 @@
             </intent-filter>
         </service>
 
+        <activity android:name=".activites.Update_data"></activity>
     </application>
 
 </manifest>
