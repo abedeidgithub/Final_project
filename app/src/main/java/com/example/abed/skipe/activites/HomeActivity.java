@@ -13,6 +13,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.abed.skipe.Fragments.PostOrAsk;
 import com.example.abed.skipe.Fragments.Profile;
 import com.example.abed.skipe.Fragments.ScheduleFragment;
 import com.example.abed.skipe.R;
@@ -84,7 +85,7 @@ public class HomeActivity extends AppCompatActivity {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new ScheduleFragment(), "Schedule");
         adapter.addFragment(new Profile(), "profile");
-        adapter.addFragment(new ScheduleFragment(), "THREE");
+        adapter.addFragment(new PostOrAsk(), "Poats");
         adapter.addFragment(new ScheduleFragment(), "ONE");
         adapter.addFragment(new ScheduleFragment(), "TWO");
         adapter.addFragment(new ScheduleFragment(), "THREE");

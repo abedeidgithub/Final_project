@@ -43,4 +43,11 @@
     <color name="tab_background_unselected">#D5353E</color>
     <color name="offwhite">#f1f1f1</color>
     <color name="bd">	#3b5998</color>
+
+    <color name="white">#ffffff</color>
+    <color name="feed_bg">#d3d6db</color>
+    <color name="feed_item_bg">#ffffff</color>
+    <color name="feed_item_border">#c2c3c8</color>
+    <color name="link">#0a80d1</color>
+    <color name="timestamp">#a0a3a7</color>
 </resources>

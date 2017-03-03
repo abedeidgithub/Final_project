@@ -3,7 +3,9 @@
     package="com.example.abed.skipe">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.MANAGE_DOCUMENTS"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+     <uses-permission android:name="android.permission.CAMERA"/>
     <application
         android:name=".utils.APP"
         android:allowBackup="true"

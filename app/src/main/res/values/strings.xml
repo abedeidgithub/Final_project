@@ -64,5 +64,11 @@
     <string name="check">Ok</string>
     <string name="update">Update</string>
     <string name="site">Your Persioal Site</string>
+    <string name="choose_app">Choose app</string>
+    <string name="cancel">Cancel</string>
+    <string name="gallery">gallery</string>
+    <string name="camera">camera</string>
+    <string name="select_picture">select_image</string>
+
 
 </resources>
