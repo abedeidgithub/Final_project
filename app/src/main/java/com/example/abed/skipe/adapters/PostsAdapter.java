@@ -1,6 +1,7 @@
 package com.example.abed.skipe.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,12 +12,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.abed.skipe.R;
+import com.example.abed.skipe.activites.Comment;
 import com.example.abed.skipe.imageCircle.CircleTransform;
 import com.example.abed.skipe.model.Post;
-import com.example.abed.skipe.model.Schedule;
 import com.squareup.picasso.Picasso;
 
-import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -45,7 +45,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.MyViewHolder
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
-        Post CurrentPost = postList.get(position);
+        final Post CurrentPost = postList.get(position);
         holder.post_txt.setText(CurrentPost.ask_or_post_text);
         holder.writer_post_name.setText(CurrentPost.name);
         holder.writer_post_time.setText(CurrentPost.created_at);
@@ -59,6 +59,10 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.MyViewHolder
         holder.comment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent=new Intent(context, Comment.class);
+                intent.putExtra("Post_ID",CurrentPost.id);
+                context.startActivity(intent);
+
 
             }
         });

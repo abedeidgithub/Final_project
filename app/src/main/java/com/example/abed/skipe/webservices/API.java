@@ -1,6 +1,7 @@
 package com.example.abed.skipe.webservices;
 
 import com.example.abed.skipe.Fragments.PostOrAsk;
+import com.example.abed.skipe.model.CommentModel;
 import com.example.abed.skipe.model.MainResponse;
 import com.example.abed.skipe.model.Post;
 import com.example.abed.skipe.model.Schedule;
@@ -27,6 +28,9 @@ public interface API {
 
     @POST("ask_or_post.php")
     Call<List<Post>> Posts(@Body users users);
+
+    @POST("answer_or_comment.php")
+    Call<List<CommentModel>> Commrnts(@Body CommentModel commentModel);
 
 
 //    @POST("upload_img.php")

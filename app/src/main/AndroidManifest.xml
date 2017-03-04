@@ -3,9 +3,10 @@
     package="com.example.abed.skipe">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.MANAGE_DOCUMENTS"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-     <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.MANAGE_DOCUMENTS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:name=".utils.APP"
         android:allowBackup="true"
@@ -31,7 +32,8 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".activites.Update_data"></activity>
+        <activity android:name=".activites.Update_data" />
+        <activity android:name=".activites.Comment"></activity>
     </application>
 
 </manifest>
